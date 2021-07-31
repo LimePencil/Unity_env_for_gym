@@ -43,6 +43,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-
+python-envs/
 # Crashlytics generated file
 crashlytics-build.properties

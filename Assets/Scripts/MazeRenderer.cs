@@ -8,13 +8,11 @@ using System.IO;
 public class MazeRenderer : MonoBehaviour
 {
 
-    [SerializeField]
     [Range(1, 50)]
-    private int width = 10;
+    public int width = 10;
 
-    [SerializeField]
     [Range(1, 50)]
-    private int height = 10;
+    public int height = 10;
 
     private float size = 1f;
 
@@ -26,8 +24,6 @@ public class MazeRenderer : MonoBehaviour
 
     [SerializeField]
     private Transform playerPrefab = null;
-    [SerializeField]
-    private Transform goalPrefab = null;
     [SerializeField]
     public bool loadPrevPrefab = false;
     [SerializeField]
@@ -80,7 +76,6 @@ public class MazeRenderer : MonoBehaviour
 
         var floor = Instantiate(floorPrefab, transform);
         Instantiate(playerPrefab,transform);
-        Instantiate(goalPrefab,new Vector3((width-1)/2,0.25f,(height-1)/2), Quaternion.identity);
         floor.localScale = new Vector3(width,1, height);
 
         for (int i = 0; i < width; ++i)

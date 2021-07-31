@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1627640671",
+        "python_version": "3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\jaeyo\\AppData\\Local\\Programs\\Python\\Python38\\Scripts\\mlagents-learn Config\\PPO\\cameraTest.yaml --run-id agent1 --force",
+        "mlagents_version": "0.27.0",
+        "mlagents_envs_version": "0.27.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.19.5",
+        "end_time_seconds": "1627640677"
+    },
+    "total": 5.4789262,
+    "count": 1,
+    "self": 0.006008299999999522,
+    "children": {
+        "run_training.setup": {
+            "total": 0.10946040000000012,
+            "count": 1,
+            "self": 0.10946040000000012
+        },
+        "TrainerController.start_learning": {
+            "total": 5.3634575,
+            "count": 1,
+            "self": 8.169999999996236e-05,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 5.3633644,
+                    "count": 1,
+                    "self": 5.3633644
+                },
+                "TrainerController._save_models": {
+                    "total": 1.1399999999994748e-05,
+                    "count": 1,
+                    "self": 1.1399999999994748e-05
+                }
+            }
+        }
+    }
+}

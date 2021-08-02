@@ -1,0 +1,38 @@
+{
+    "MazeAgent2": {
+        "checkpoints": [
+            {
+                "steps": 20000,
+                "file_path": "results\\firstrun\\MazeAgent2\\MazeAgent2-20000.onnx",
+                "reward": null,
+                "creation_time": 1627894372.7818367,
+                "auxillary_file_paths": [
+                    "results\\firstrun\\MazeAgent2\\MazeAgent2-20000.pt"
+                ]
+            },
+            {
+                "steps": 43607,
+                "file_path": "results\\firstrun\\MazeAgent2\\MazeAgent2-43607.onnx",
+                "reward": -6.000000715255737,
+                "creation_time": 1627894524.9992237,
+                "auxillary_file_paths": [
+                    "results\\firstrun\\MazeAgent2\\MazeAgent2-43607.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 43607,
+            "file_path": "results\\firstrun\\MazeAgent2.onnx",
+            "reward": -6.000000715255737,
+            "creation_time": 1627894524.9992237,
+            "auxillary_file_paths": [
+                "results\\firstrun\\MazeAgent2\\MazeAgent2-43607.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

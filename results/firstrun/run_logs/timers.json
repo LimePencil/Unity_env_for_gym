@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1627896964",
+        "python_version": "3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\jaeyo\\Desktop\\all stuff\\Coding\\Unity\\Maze Sim\\Ml-agent-with-gym\\python-envs\\maze-env\\Scripts\\mlagents-learn Assets\\Config\\PPO\\cameraTest.yaml --env=Build\\Ml-agent-with-gym --run-id=firstrun --resume --num-envs=2",
+        "mlagents_version": "0.27.0",
+        "mlagents_envs_version": "0.27.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.21.1",
+        "end_time_seconds": "1627897036"
+    },
+    "total": 72.0093337,
+    "count": 1,
+    "self": 10.008724400000006,
+    "children": {
+        "run_training.setup": {
+            "total": 0.2779347999999997,
+            "count": 1,
+            "self": 0.2779347999999997
+        },
+        "TrainerController.start_learning": {
+            "total": 61.7226745,
+            "count": 1,
+            "self": 0.00014439999999638076,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 61.7225157,
+                    "count": 1,
+                    "self": 61.7225157
+                },
+                "TrainerController._save_models": {
+                    "total": 1.4399999997749546e-05,
+                    "count": 1,
+                    "self": 1.4399999997749546e-05
+                }
+            }
+        }
+    }
+}

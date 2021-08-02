@@ -79,7 +79,7 @@ public class MazeRenderer : MonoBehaviour
 
         var floor = Instantiate(floorPrefab, transform, false);
         Instantiate(playerPrefab,transform,false);
-        floor.localScale = new Vector3(width/4,1, height/4);
+        floor.localScale = new Vector3(width/4.0f,1, height/4.0f);
 
         for (int i = 0; i < width; ++i)
         {
@@ -93,6 +93,7 @@ public class MazeRenderer : MonoBehaviour
                     var topWall = Instantiate(wallPrefab, transform) as Transform;
                     topWall.localPosition = position + new Vector3(0, 0, size / 2);
                     topWall.localScale = new Vector3(size, topWall.localScale.y, topWall.localScale.z);
+                    topWall.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value);
                 }
 
                 if (cell.HasFlag(WallState.LEFT))
@@ -101,6 +102,7 @@ public class MazeRenderer : MonoBehaviour
                     leftWall.localPosition = position + new Vector3(-size / 2, 0, 0);
                     leftWall.localScale = new Vector3(size, leftWall.localScale.y, leftWall.localScale.z);
                     leftWall.eulerAngles = new Vector3(0, 90, 0);
+                    leftWall.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value);
                 }
 
                 if (i == width - 1)
@@ -111,6 +113,8 @@ public class MazeRenderer : MonoBehaviour
                         rightWall.localPosition = position + new Vector3(+size / 2, 0, 0);
                         rightWall.localScale = new Vector3(size, rightWall.localScale.y, rightWall.localScale.z);
                         rightWall.eulerAngles = new Vector3(0, 90, 0);
+                        rightWall.GetComponent<Renderer>().material.color = new Color(Random.Range(0, 255), Random.value, Random.value);
+
                     }
                 }
 
@@ -121,6 +125,7 @@ public class MazeRenderer : MonoBehaviour
                         var bottomWall = Instantiate(wallPrefab, transform) as Transform;
                         bottomWall.localPosition = position + new Vector3(0, 0, -size / 2);
                         bottomWall.localScale = new Vector3(size, bottomWall.localScale.y, bottomWall.localScale.z);
+                        bottomWall.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value);
                     }
                 }
             }

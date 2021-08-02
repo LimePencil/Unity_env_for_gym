@@ -19,6 +19,8 @@ public class MoveToGoalScrip : Agent
     public Material goodMt;
     public GameObject goalPrefab;
     private GameObject goalClone = null;
+
+    public int multiplier = 4;
     MazeRenderer render;
     Transform parentTransform;
     //초기화 작업을 위해 한번 호출되는 메소드
@@ -29,7 +31,7 @@ public class MoveToGoalScrip : Agent
         rb = GetComponent<Rigidbody>();
         render = GetComponentInParent<MazeRenderer>();
         parentTransform = GetComponentInParent<MazeRenderer>().transform;
-        goalClone = (GameObject)Instantiate(goalPrefab, parentTransform.position + new Vector3(((render.width- 1) / 2 * (Random.Range(0, 2) * 2 - 1)), 0.25f, ((render.height- 1) / 2) * (Random.Range(0, 2) * 2 - 1)), Quaternion.identity,parentTransform);
+        instantiateGoal();
         //originMt = floorRender.material;
     }
 
@@ -42,8 +44,20 @@ public class MoveToGoalScrip : Agent
         rb.angularVelocity = Vector3.zero;
         tr.localPosition = new Vector3(0, 1, 0);
         Destroy(goalClone);
-        goalClone = (GameObject)Instantiate(goalPrefab, parentTransform.position + new Vector3(((render.width - 1) / 2 * (Random.Range(0, 2) * 2 - 1)), 0.25f, ((render.height - 1) / 2) * (Random.Range(0, 2) * 2 - 1)), Quaternion.identity, parentTransform);
+        instantiateGoal();
         //StartCoroutine(RevertMaterial());
+    }
+    private void instantiateGoal()
+    {
+        if(render.width % 2 != 0)
+        {
+            goalClone = (GameObject)Instantiate(goalPrefab, parentTransform.position + new Vector3((((render.width - 1) / 2.0f) * (Random.Range(0, 2) * 2 - 1)), 0.25f, ((render.height - 1) / 2.0f) * (Random.Range(0, 2) * 2 - 1)), Quaternion.identity, parentTransform);
+        }
+        else
+        {
+            goalClone = (GameObject)Instantiate(goalPrefab, parentTransform.position + new Vector3((-0.5f + ((render.width-1) / 2.0f) * (Random.Range(0, 2) * 2 - 1)), 0.25f, (-0.5f + ((render.width -1)/ 2.0f) * (Random.Range(0, 2) * 2 - 1))), Quaternion.identity, parentTransform);
+        }
+
     }
 
     //IEnumerator RevertMaterial()
@@ -66,8 +80,8 @@ public class MoveToGoalScrip : Agent
         float h = Mathf.Clamp(actionBuffers.ContinuousActions[0], -1.0f, 1.0f);
         float v = Mathf.Clamp(actionBuffers.ContinuousActions[1], -1.0f, 1.0f);
         Vector3 dir = (Vector3.forward * v);
-        tr.Translate(dir * 0.005f);
-        tr.Rotate(Vector3.up * 0.1f*h);
+        tr.Translate(dir * 0.005f*4);
+        tr.Rotate(Vector3.up * 0.1f*h*4);
         //지속적으로 이동을 이끌어내기 위한 마이너스 보상
         SetReward(-0.001f);
     }

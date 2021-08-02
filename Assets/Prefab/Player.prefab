@@ -142,7 +142,7 @@ MonoBehaviour:
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
-  m_InferenceDevice: 1
+  m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: MazeAgent2
   TeamId: 0
@@ -164,10 +164,11 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 30000
+  MaxStep: 10000
   badMt: {fileID: 2100000, guid: cc70f5e97e644a94caf876fe714f4822, type: 2}
   goodMt: {fileID: 2100000, guid: f54bc1421c4b27b42a79222c4471d379, type: 2}
   goalPrefab: {fileID: 846885237934535120, guid: 5fc7c127d2ce757479c41a31fa9f78e6, type: 3}
+  multiplier: 4
 --- !u!114 &6023095626044127261
 MonoBehaviour:
   m_ObjectHideFlags: 0

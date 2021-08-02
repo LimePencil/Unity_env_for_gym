@@ -19,8 +19,11 @@ behaviors:
       extrinsic:
         gamma: 0.99
         strength: 1.0
+      curiosity:
+        strength: 0.001
+        gamma: 0.99
     keep_checkpoints: 5
-    max_steps: 800000
+    max_steps: 4000000
     time_horizon: 1000
     summary_freq: 1000
     threaded: true

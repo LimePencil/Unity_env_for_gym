@@ -1,0 +1,43 @@
+Mono path[0] = 'C:/Users/jaeyo/Desktop/all stuff/Coding/Unity/Maze Sim/Ml-agent-with-gym/Build/Ml-agent-with-gym_Data/Managed'
+Mono config path = 'C:/Users/jaeyo/Desktop/all stuff/Coding/Unity/Maze Sim/Ml-agent-with-gym/Build/MonoBleedingEdge/etc'
+Initialize engine version: 2020.3.10f1 (297d780c91bc)
+[Subsystems] Discovering subsystems at path C:/Users/jaeyo/Desktop/all stuff/Coding/Unity/Maze Sim/Ml-agent-with-gym/Build/Ml-agent-with-gym_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 Ti with Max-Q Design (ID=0x2191)
+    Vendor:   
+    VRAM:     5991 MB
+    Driver:   30.0.14.7111
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.098 seconds
+D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.845900 ms
+IOException: Sharing violation on path C:\Users\jaeyo\Desktop\all stuff\Coding\Unity\Maze Sim\Ml-agent-with-gym\Assets\Maze\mazeV1cool
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x001b7] in <a1e9f114a6e64f4eacb529fc802ec93d>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) [0x00000] in <a1e9f114a6e64f4eacb529fc802ec93d>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+  at System.IO.File.Open (System.String path, System.IO.FileMode mode) [0x00000] in <a1e9f114a6e64f4eacb529fc802ec93d>:0 
+  at MazeRenderer.DeSerialization (System.String path, System.String filename, System.String ext) [0x00013] in <496ee126763d4b1fbe84482c5cbca79b>:0 
+  at MazeRenderer.Start () [0x0004e] in <496ee126763d4b1fbe84482c5cbca79b>:0 
+
+IOException: Sharing violation on path C:\Users\jaeyo\Desktop\all stuff\Coding\Unity\Maze Sim\Ml-agent-with-gym\Assets\Maze\mazeV1cool
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x001b7] in <a1e9f114a6e64f4eacb529fc802ec93d>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) [0x00000] in <a1e9f114a6e64f4eacb529fc802ec93d>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
+  at System.IO.File.Open (System.String path, System.IO.FileMode mode) [0x00000] in <a1e9f114a6e64f4eacb529fc802ec93d>:0 
+  at MazeRenderer.DeSerialization (System.String path, System.String filename, System.String ext) [0x00013] in <496ee126763d4b1fbe84482c5cbca79b>:0 
+  at MazeRenderer.Start () [0x0004e] in <496ee126763d4b1fbe84482c5cbca79b>:0 
+
+Setting up 8 worker threads for Enlighten.
+  Thread -> id: 23c0 -> priority: 1 
+  Thread -> id: 40a0 -> priority: 1 
+  Thread -> id: 4970 -> priority: 1 
+  Thread -> id: 5024 -> priority: 1 
+  Thread -> id: 2f94 -> priority: 1 
+  Thread -> id: 5c44 -> priority: 1 
+  Thread -> id: 6060 -> priority: 1 
+  Thread -> id: 7f1c -> priority: 1 

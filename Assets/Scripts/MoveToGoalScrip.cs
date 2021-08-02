@@ -20,26 +20,29 @@ public class MoveToGoalScrip : Agent
     public GameObject goalPrefab;
     private GameObject goalClone = null;
     MazeRenderer render;
+    Transform parentTransform;
     //초기화 작업을 위해 한번 호출되는 메소드
 
     public override void Initialize()
     {
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
-        render = FindObjectOfType<MazeRenderer>();
-        goalClone = (GameObject)Instantiate(goalPrefab, new Vector3(((render.width- 1) / 2 * (Random.Range(0, 2) * 2 - 1)), 0.25f, ((render.height- 1) / 2) * (Random.Range(0, 2) * 2 - 1)), Quaternion.identity);
+        render = GetComponentInParent<MazeRenderer>();
+        parentTransform = GetComponentInParent<MazeRenderer>().transform;
+        goalClone = (GameObject)Instantiate(goalPrefab, parentTransform.position + new Vector3(((render.width- 1) / 2 * (Random.Range(0, 2) * 2 - 1)), 0.25f, ((render.height- 1) / 2) * (Random.Range(0, 2) * 2 - 1)), Quaternion.identity,parentTransform);
         //originMt = floorRender.material;
     }
 
     //에피소드(학습단위)가 시작할때마다 호출
     public override void OnEpisodeBegin()
     {
-        Destroy(goalClone);
-        goalClone = (GameObject)Instantiate(goalPrefab, new Vector3(((render.width- 1) / 2 * (Random.Range(0, 2) * 2 - 1)), 0.25f, ((render.height- 1) / 2) * (Random.Range(0, 2) * 2 - 1)), Quaternion.identity);
+        
         //물리력을 초기화
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        tr.position = Vector3.zero;
+        tr.localPosition = new Vector3(0, 1, 0);
+        Destroy(goalClone);
+        goalClone = (GameObject)Instantiate(goalPrefab, parentTransform.position + new Vector3(((render.width - 1) / 2 * (Random.Range(0, 2) * 2 - 1)), 0.25f, ((render.height - 1) / 2) * (Random.Range(0, 2) * 2 - 1)), Quaternion.identity, parentTransform);
         //StartCoroutine(RevertMaterial());
     }
 
@@ -63,8 +66,8 @@ public class MoveToGoalScrip : Agent
         float h = Mathf.Clamp(actionBuffers.ContinuousActions[0], -1.0f, 1.0f);
         float v = Mathf.Clamp(actionBuffers.ContinuousActions[1], -1.0f, 1.0f);
         Vector3 dir = (Vector3.forward * v);
-        rb.AddRelativeForce(dir.normalized * 10.0f);
-        tr.Rotate(Vector3.up * 5.0f*h);
+        tr.Translate(dir * 0.005f);
+        tr.Rotate(Vector3.up * 0.1f*h);
         //지속적으로 이동을 이끌어내기 위한 마이너스 보상
         SetReward(-0.001f);
     }

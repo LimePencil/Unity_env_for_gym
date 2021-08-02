@@ -25,25 +25,28 @@ public class MazeRenderer : MonoBehaviour
     [SerializeField]
     private Transform playerPrefab = null;
     [SerializeField]
-    public bool loadPrevPrefab = false;
+    public bool loadPrev = false;
+    public bool isPrefab = false;
     [SerializeField]
     WallState[,] theMaze;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(loadPrevPrefab == false)
+        if (!isPrefab)
         {
-            theMaze = MazeGenerator.Generate(width, height);
-            Draw(theMaze);
-            ObjectSerialize(theMaze,"Assets/Maze","mazeV1","cool");
+            if (loadPrev == false)
+            {
+                theMaze = MazeGenerator.Generate(width, height);
+                Draw(theMaze);
+                ObjectSerialize(theMaze, "Assets/Maze", "mazeV1", "cool");
+            }
+            else
+            {
+                theMaze = DeSerialization("Assets/Maze", "mazeV1", "cool");
+                Draw(theMaze);
+            }
         }
-        else
-        {
-            theMaze = DeSerialization("Assets/Maze", "mazeV1", "cool");
-            Draw(theMaze);  
-        }
-
     }
 
     public static void ObjectSerialize(object obj,string path, string filename, string ext)
@@ -74,9 +77,9 @@ public class MazeRenderer : MonoBehaviour
     private void Draw(WallState[,] maze)
     {
 
-        var floor = Instantiate(floorPrefab, transform);
-        Instantiate(playerPrefab,transform);
-        floor.localScale = new Vector3(width,1, height);
+        var floor = Instantiate(floorPrefab, transform, false);
+        Instantiate(playerPrefab,transform,false);
+        floor.localScale = new Vector3(width/4,1, height/4);
 
         for (int i = 0; i < width; ++i)
         {
@@ -88,14 +91,14 @@ public class MazeRenderer : MonoBehaviour
                 if (cell.HasFlag(WallState.UP))
                 {
                     var topWall = Instantiate(wallPrefab, transform) as Transform;
-                    topWall.position = position + new Vector3(0, 0, size / 2);
+                    topWall.localPosition = position + new Vector3(0, 0, size / 2);
                     topWall.localScale = new Vector3(size, topWall.localScale.y, topWall.localScale.z);
                 }
 
                 if (cell.HasFlag(WallState.LEFT))
                 {
                     var leftWall = Instantiate(wallPrefab, transform) as Transform;
-                    leftWall.position = position + new Vector3(-size / 2, 0, 0);
+                    leftWall.localPosition = position + new Vector3(-size / 2, 0, 0);
                     leftWall.localScale = new Vector3(size, leftWall.localScale.y, leftWall.localScale.z);
                     leftWall.eulerAngles = new Vector3(0, 90, 0);
                 }
@@ -105,7 +108,7 @@ public class MazeRenderer : MonoBehaviour
                     if (cell.HasFlag(WallState.RIGHT))
                     {
                         var rightWall = Instantiate(wallPrefab, transform) as Transform;
-                        rightWall.position = position + new Vector3(+size / 2, 0, 0);
+                        rightWall.localPosition = position + new Vector3(+size / 2, 0, 0);
                         rightWall.localScale = new Vector3(size, rightWall.localScale.y, rightWall.localScale.z);
                         rightWall.eulerAngles = new Vector3(0, 90, 0);
                     }
@@ -116,7 +119,7 @@ public class MazeRenderer : MonoBehaviour
                     if (cell.HasFlag(WallState.DOWN))
                     {
                         var bottomWall = Instantiate(wallPrefab, transform) as Transform;
-                        bottomWall.position = position + new Vector3(0, 0, -size / 2);
+                        bottomWall.localPosition = position + new Vector3(0, 0, -size / 2);
                         bottomWall.localScale = new Vector3(size, bottomWall.localScale.y, bottomWall.localScale.z);
                     }
                 }

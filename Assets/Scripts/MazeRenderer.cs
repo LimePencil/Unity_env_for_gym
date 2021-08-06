@@ -35,15 +35,16 @@ public class MazeRenderer : MonoBehaviour
     {
         if (!isPrefab)
         {
+            string path = Application.streamingAssetsPath + "/Maze";
             if (loadPrev == false)
             {
                 theMaze = MazeGenerator.Generate(width, height);
                 Draw(theMaze);
-                ObjectSerialize(theMaze, "Assets/Maze", "mazeV1", "cool");
+                ObjectSerialize(theMaze, path, "mazeV1", "cool");
             }
             else
             {
-                theMaze = DeSerialization("Assets/Maze", "mazeV1", "cool");
+                theMaze = DeSerialization(path, "mazeV1", "cool");
                 Draw(theMaze);
             }
         }

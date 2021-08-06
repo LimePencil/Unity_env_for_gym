@@ -25,5 +25,5 @@ behaviors:
     keep_checkpoints: 5
     max_steps: 4000000
     time_horizon: 1000
-    summary_freq: 1000
+    summary_freq: 10000
     threaded: true

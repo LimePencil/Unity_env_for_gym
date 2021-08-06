@@ -42,7 +42,7 @@ public class MoveToGoalScrip : Agent
         //물리력을 초기화
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        tr.localPosition = new Vector3(0, 1, 0);
+        tr.localPosition = new Vector3(0, 0.27f, 0);
         Destroy(goalClone);
         instantiateGoal();
         //StartCoroutine(RevertMaterial());

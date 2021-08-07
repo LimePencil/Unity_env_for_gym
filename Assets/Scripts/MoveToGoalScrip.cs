@@ -66,13 +66,13 @@ public class MoveToGoalScrip : Agent
     //    floorRender.material = originMt;
     //}
     //환경 정보를 관측 및 수집해 정책 결정을 위해 브레인에 전달하는 메소드
-    //public override void CollectObservations(VectorSensor sensor)
-    //{
-    //    sensor.AddObservation(targetTr.localPosition);  //3 (x,y,z)
-    //    sensor.AddObservation(tr.localPosition);        //3 (x,y,z)
-    //    sensor.AddObservation(rb.velocity.x);           //1 (x)
-    //    sensor.AddObservation(rb.velocity.z);           //1 (z)
-    //}
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(goalClone.transform.localPosition);  //3 (x,y,z)
+        sensor.AddObservation(tr.localPosition);        //3 (x,y,z)
+        sensor.AddObservation(tr.rotation.y);           //1 (x)
+        Debug.Log(tr.rotation.y);
+    }
     //브레인(정책)으로 부터 전달 받은 행동을 실행하는 메소드
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {

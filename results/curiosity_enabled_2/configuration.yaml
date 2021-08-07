@@ -46,12 +46,12 @@ behaviors:
     checkpoint_interval: 500000
     max_steps: 4000000
     time_horizon: 1000
-    summary_freq: 1000
+    summary_freq: 10000
     threaded: true
     self_play: null
     behavioral_cloning: null
 env_settings:
-  env_path: null
+  env_path: Build/Ml-agent-with-gym
   env_args: null
   base_port: 5005
   num_envs: 1

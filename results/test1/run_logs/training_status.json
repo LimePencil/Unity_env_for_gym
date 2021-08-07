@@ -1,0 +1,29 @@
+{
+    "MazeAgent2": {
+        "checkpoints": [
+            {
+                "steps": 2000,
+                "file_path": "results\\test1\\MazeAgent2\\MazeAgent2-2000.onnx",
+                "reward": null,
+                "creation_time": 1628243465.5295572,
+                "auxillary_file_paths": [
+                    "results\\test1\\MazeAgent2\\MazeAgent2-2000.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2000,
+            "file_path": "results\\test1\\MazeAgent2.onnx",
+            "reward": null,
+            "creation_time": 1628243465.5295572,
+            "auxillary_file_paths": [
+                "results\\test1\\MazeAgent2\\MazeAgent2-2000.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

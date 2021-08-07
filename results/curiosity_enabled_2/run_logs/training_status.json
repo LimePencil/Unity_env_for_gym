@@ -2,22 +2,40 @@
     "MazeAgent2": {
         "checkpoints": [
             {
-                "steps": 10546,
-                "file_path": "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-10546.onnx",
-                "reward": -2.000000238418579,
-                "creation_time": 1627912377.2100925,
+                "steps": 499317,
+                "file_path": "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-499317.onnx",
+                "reward": null,
+                "creation_time": 1627924722.2347534,
                 "auxillary_file_paths": [
-                    "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-10546.pt"
+                    "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-499317.pt"
+                ]
+            },
+            {
+                "steps": 999488,
+                "file_path": "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-999488.onnx",
+                "reward": -2.000000238418579,
+                "creation_time": 1627934485.3839767,
+                "auxillary_file_paths": [
+                    "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-999488.pt"
+                ]
+            },
+            {
+                "steps": 1375898,
+                "file_path": "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-1375898.onnx",
+                "reward": null,
+                "creation_time": 1627941819.4951816,
+                "auxillary_file_paths": [
+                    "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-1375898.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 10546,
+            "steps": 1375898,
             "file_path": "results\\curiosity_enabled_2\\MazeAgent2.onnx",
-            "reward": -2.000000238418579,
-            "creation_time": 1627912377.2100925,
+            "reward": null,
+            "creation_time": 1627941819.4951816,
             "auxillary_file_paths": [
-                "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-10546.pt"
+                "results\\curiosity_enabled_2\\MazeAgent2\\MazeAgent2-1375898.pt"
             ]
         }
     },

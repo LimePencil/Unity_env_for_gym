@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 44509575592068495}
   - component: {fileID: 4927193624829096711}
   - component: {fileID: 6399863598400633825}
-  - component: {fileID: 6023095626044127261}
   - component: {fileID: 5200908478351297192}
   m_Layer: 0
   m_Name: Player
@@ -169,26 +168,6 @@ MonoBehaviour:
   goodMt: {fileID: 2100000, guid: f54bc1421c4b27b42a79222c4471d379, type: 2}
   goalPrefab: {fileID: 846885237934535120, guid: 5fc7c127d2ce757479c41a31fa9f78e6, type: 3}
   multiplier: 4
---- !u!114 &6023095626044127261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44509575592068497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282f342c2ab144bf38be65d4d0c4e07d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 44509576379849690}
-  m_SensorName: CameraSensor
-  m_Width: 84
-  m_Height: 84
-  m_Grayscale: 1
-  m_ObservationType: 0
-  m_ObservationStacks: 1
-  m_Compression: 1
 --- !u!114 &5200908478351297192
 MonoBehaviour:
   m_ObjectHideFlags: 0

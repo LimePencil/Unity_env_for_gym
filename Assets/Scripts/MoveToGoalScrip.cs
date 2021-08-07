@@ -71,7 +71,6 @@ public class MoveToGoalScrip : Agent
         sensor.AddObservation(goalClone.transform.localPosition);  //3 (x,y,z)
         sensor.AddObservation(tr.localPosition);        //3 (x,y,z)
         sensor.AddObservation(tr.rotation.y);           //1 (x)
-        Debug.Log(tr.rotation.y);
     }
     //브레인(정책)으로 부터 전달 받은 행동을 실행하는 메소드
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -83,7 +82,20 @@ public class MoveToGoalScrip : Agent
         tr.Translate(dir * 0.005f*4);
         tr.Rotate(Vector3.up * 0.1f*h*4);
         //지속적으로 이동을 이끌어내기 위한 마이너스 보상
-        SetReward(-0.001f);
+        SetReward(-0.001f + distanceReward(tr.localPosition.x, tr.localPosition.z, goalClone.transform.localPosition.x, goalClone.transform.localPosition.z));
+        if(StepCount == MaxStep)
+        {
+            Debug.Log("Finished without Reaching");
+            SetReward(-1.0f);
+            EndEpisode();
+        }
+    }
+    private float distanceReward(float playerX,float playerZ, float targetX,float targetZ)
+    {
+        float distance = Mathf.Sqrt(Mathf.Pow(playerX - targetX, 2) + Mathf.Pow(playerZ - targetZ, 2));
+        float maxDisPos = Mathf.Sqrt(Mathf.Pow(render.width - 0.5f, 2) + Mathf.Pow(render.height - 0.5f, 2));
+        float reward = 0.0001f * (maxDisPos-distance);
+        return reward;
     }
 
     //개발자(사용자)가 직접 명령을 내릴때 호출하는 메소드(주로 테스트용도 또는 모방학습에 사용)

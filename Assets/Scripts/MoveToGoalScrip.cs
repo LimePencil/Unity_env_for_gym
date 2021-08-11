@@ -82,21 +82,22 @@ public class MoveToGoalScrip : Agent
         tr.Translate(dir * 0.005f*4);
         tr.Rotate(Vector3.up * 0.1f*h*4);
         //지속적으로 이동을 이끌어내기 위한 마이너스 보상
-        SetReward(-0.001f + distanceReward(tr.localPosition.x, tr.localPosition.z, goalClone.transform.localPosition.x, goalClone.transform.localPosition.z));
+        //SetReward(-0.001f + distanceReward(tr.localPosition.x, tr.localPosition.z, goalClone.transform.localPosition.x, goalClone.transform.localPosition.z));
+        AddReward(-0.001f);
         if(StepCount == MaxStep)
         {
             Debug.Log("Finished without Reaching");
-            SetReward(-1.0f);
+            AddReward(-1.0f);
             EndEpisode();
         }
     }
-    private float distanceReward(float playerX,float playerZ, float targetX,float targetZ)
-    {
-        float distance = Mathf.Sqrt(Mathf.Pow(playerX - targetX, 2) + Mathf.Pow(playerZ - targetZ, 2));
-        float maxDisPos = Mathf.Sqrt(Mathf.Pow(render.width - 0.5f, 2) + Mathf.Pow(render.height - 0.5f, 2));
-        float reward = 0.0001f * (maxDisPos-distance);
-        return reward;
-    }
+    //private float distanceReward(float playerX,float playerZ, float targetX,float targetZ)
+    //{
+    //    float distance = Mathf.Sqrt(Mathf.Pow(playerX - targetX, 2) + Mathf.Pow(playerZ - targetZ, 2));
+    //    float maxDisPos = Mathf.Sqrt(Mathf.Pow(render.width - 0.5f, 2) + Mathf.Pow(render.height - 0.5f, 2));
+    //    float reward = 0.0001f * (maxDisPos-distance);
+    //    return reward;
+    //}
 
     //개발자(사용자)가 직접 명령을 내릴때 호출하는 메소드(주로 테스트용도 또는 모방학습에 사용)
     public override void Heuristic(in ActionBuffers actionBuffersOut)

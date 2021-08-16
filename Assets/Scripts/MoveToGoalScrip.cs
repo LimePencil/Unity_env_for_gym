@@ -82,7 +82,7 @@ public class MoveToGoalScrip : Agent
         tr.Rotate(Vector3.up * 0.1f*h);
         //지속적으로 이동을 이끌어내기 위한 마이너스 보상
         //SetReward(-0.001f + distanceReward(tr.localPosition.x, tr.localPosition.z, goalClone.transform.localPosition.x, goalClone.transform.localPosition.z));
-        AddReward(-0.001f);
+        AddReward(-0.00005f);
         if(StepCount == MaxStep)
         {
             Debug.Log("Finished without Reaching");

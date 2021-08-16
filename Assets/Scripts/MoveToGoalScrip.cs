@@ -20,7 +20,6 @@ public class MoveToGoalScrip : Agent
     public GameObject goalPrefab;
     private GameObject goalClone = null;
 
-    public int multiplier = 4;
     MazeRenderer render;
     Transform parentTransform;
     //초기화 작업을 위해 한번 호출되는 메소드
@@ -79,8 +78,8 @@ public class MoveToGoalScrip : Agent
         float h = Mathf.Clamp(actionBuffers.ContinuousActions[0], -1.0f, 1.0f);
         float v = Mathf.Clamp(actionBuffers.ContinuousActions[1], -1.0f, 1.0f);
         Vector3 dir = (Vector3.forward * v);
-        tr.Translate(dir * 0.005f*4);
-        tr.Rotate(Vector3.up * 0.1f*h*4);
+        tr.Translate(dir * 0.005f);
+        tr.Rotate(Vector3.up * 0.1f*h);
         //지속적으로 이동을 이끌어내기 위한 마이너스 보상
         //SetReward(-0.001f + distanceReward(tr.localPosition.x, tr.localPosition.z, goalClone.transform.localPosition.x, goalClone.transform.localPosition.z));
         AddReward(-0.001f);

@@ -19,6 +19,7 @@ public class MoveToGoalScrip : Agent
     public Material goodMt;
     public GameObject goalPrefab;
     private GameObject goalClone = null;
+    public float multiplier = 4f;
 
     MazeRenderer render;
     Transform parentTransform;
@@ -78,8 +79,8 @@ public class MoveToGoalScrip : Agent
         float h = Mathf.Clamp(actionBuffers.ContinuousActions[0], -1.0f, 1.0f);
         float v = Mathf.Clamp(actionBuffers.ContinuousActions[1], -1.0f, 1.0f);
         Vector3 dir = (Vector3.forward * v);
-        tr.Translate(dir * 0.005f);
-        tr.Rotate(Vector3.up * 0.1f*h);
+        tr.Translate(dir * 0.005f*multiplier);
+        tr.Rotate(Vector3.up * 0.1f*h*multiplier);
         //지속적으로 이동을 이끌어내기 위한 마이너스 보상
         //SetReward(-0.001f + distanceReward(tr.localPosition.x, tr.localPosition.z, goalClone.transform.localPosition.x, goalClone.transform.localPosition.z));
         AddReward(-0.00005f);
@@ -98,12 +99,11 @@ public class MoveToGoalScrip : Agent
     //    return reward;
     //}
 
-    //개발자(사용자)가 직접 명령을 내릴때 호출하는 메소드(주로 테스트용도 또는 모방학습에 사용)
     public override void Heuristic(in ActionBuffers actionBuffersOut)
     {
         ActionSegment<float> ContinuousActions = actionBuffersOut.ContinuousActions;
         ContinuousActions[0] = Input.GetAxis("Horizontal"); 
-        ContinuousActions[1] = Input.GetAxis("Vertical");   
+        ContinuousActions[1] = Input.GetAxis("Vertical");
         //Debug.Log($"[0]={ContinuousActions[0]} [1]={ContinuousActions[1]}");
     }
     void OnCollisionEnter(Collision coll)

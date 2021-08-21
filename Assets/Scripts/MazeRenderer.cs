@@ -14,7 +14,9 @@ public class MazeRenderer : MonoBehaviour
     [Range(1, 50)]
     public int height = 10;
 
+    public int seed = 0;
     private float size = 1f;
+
 
     [SerializeField]
     private Transform wallPrefab = null;
@@ -24,30 +26,18 @@ public class MazeRenderer : MonoBehaviour
 
     [SerializeField]
     private Transform playerPrefab = null;
-    [SerializeField]
-    public bool loadPrev = false;
-    public bool isPrefab = false;
+
+
+
+
     [SerializeField]
     WallState[,] theMaze;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!isPrefab)
-        {
-            string path = Application.streamingAssetsPath + "/Maze";
-            if (loadPrev == false)
-            {
-                theMaze = MazeGenerator.Generate(width, height);
-                Draw(theMaze);
-                ObjectSerialize(theMaze, path, "mazeV1", "cool");
-            }
-            else
-            {
-                theMaze = DeSerialization(path, "mazeV1", "cool");
-                Draw(theMaze);
-            }
-        }
+        theMaze = MazeGenerator.Generate(width, height, seed);
+        Draw(theMaze);
     }
 
     public static void ObjectSerialize(object obj,string path, string filename, string ext)
@@ -77,7 +67,7 @@ public class MazeRenderer : MonoBehaviour
 
     private void Draw(WallState[,] maze)
     {
-
+        Random.InitState(seed);
         var floor = Instantiate(floorPrefab, transform, false);
         Instantiate(playerPrefab,transform,false);
         floor.localScale = new Vector3(width/4.0f,1, height/4.0f);
